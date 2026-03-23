@@ -1,0 +1,619 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <model name='gr_robot'>
+    <link name='base_link'>
+
+      <inertial>
+        <pose>0.00172 0.000157 -0.015991 0 -0 0</pose>
+        <mass>62.904</mass>
+        <inertia>
+          <ixx>5.55936</ixx>
+          <ixy>-0.00212481</ixy>
+          <ixz>-0.0130841</ixz>
+          <iyy>5.70812</iyy>
+          <iyz>-0.00151496</iyz>
+          <izz>3.74187</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='base_link_collision'>
+        <pose>0 0 0 1.5707 -0 -1.5707</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/scout_mini_base_link.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+
+      <collision name='base_link_fixed_joint_lump__bottom_box_link_collision_5'>
+        <pose>0 0 0.069 1.5708 0 -1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/gr_ros_kit_v3.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <collision name='base_link_fixed_joint_lump__imu_link_collision_6'>
+        <pose>0 0 0.121 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.004</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name='base_link_visual'>
+        <pose>0 0 0 1.5707 -0 -1.5707</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/scout_mini_base_link.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+     
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+    </link>
+
+    <link name="imu_link">
+      <visual name='base_link_fixed_joint_lump__bottom_box_link_visual_5'>
+        <pose>0 0 0.069 1.5708 0 -1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/gr_ros_kit_v3.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>  <!-- RGBA -->
+          <diffuse>0.2 0.2 0.2 1</diffuse>  <!-- Red color -->
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+
+      <visual name='base_link_fixed_joint_lump__imu_link_visual_6'>
+        <pose>0 0 0.121 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.004</size>
+          </box>
+        </geometry>
+      </visual>
+
+
+      <sensor name='imu_sensor' type='imu'>
+        <topic>/model/gr_robot/imu</topic>
+        <ignition_frame_id>imu_link</ignition_frame_id>
+        <always_on>1</always_on>
+        <update_rate>20</update_rate>
+        <visualize>1</visualize>
+      </sensor>
+
+      <sensor name='magneto_sensor' type='magnetometer'>
+        <topic>/model/gr_robot/magnetometer</topic>
+        <always_on>1</always_on>
+        <update_rate>20</update_rate>
+        <visualize>1</visualize>
+
+        <!-- Magnetometer-specific properties -->
+        <magnetometer>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </magnetometer>
+      </sensor>
+    </link>
+
+    <joint name="imu_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>imu_link</child>
+    </joint>
+    
+    <link name="rslidar">
+      <!-- <pose>-0.043 0 0.3273 1.5708 -0 1.5708</pose> -->
+    </link>
+    <joint name="rslidar_joint" type="fixed">
+      <pose>-0.043 0 0.3273 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>rslidar</child>
+    </joint>
+
+    <link name="RS16_link">
+      <visual name='base_link_fixed_joint_lump__base_visual_visual_8'>
+        <pose>-0.043 0 0.3273 1.5708 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/helios_16.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient>  <!-- RGBA -->
+          <diffuse>0.8 0.2 0.2 1</diffuse>  <!-- Red color -->
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual> 
+
+      <collision name='base_link_fixed_joint_lump__base_collision_collision_8'>
+        <pose>-0.043 0 0.3893 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.04</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <sensor name='RS16' type='gpu_lidar'>
+        <pose>-0.043 0 0.38548 0 -0 0</pose>
+        <update_rate>100</update_rate>
+        <topic>/model/gr_robot/lidar</topic>
+        <ignition_frame_id>rslidar</ignition_frame_id>
+        <!-- <output>points</output> -->
+
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>512</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>16</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.261799</min_angle>
+              <max_angle>0.261799</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.4</min>
+            <max>201</max>
+            <resolution>0.001</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0</stddev>
+          </noise>
+        </ray>
+        <visualize>false</visualize>
+        <always_on>0</always_on>
+      </sensor>
+    </link>
+
+    <joint name="RS16_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>RS16_link</child>
+      <pose>-0.043 0 0.3893 0 -0 0</pose>
+    </joint>
+
+    <link name="camera_link">
+      <visual name='base_link_fixed_joint_lump__camera_link_visual_7'>
+        <pose>0.2319 0 0.1375 1.5708 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/d435.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name='base_link_fixed_joint_lump__camera_link_collision_7'>
+        <pose>0.217 0 0.1375 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.02505 0.09 0.025</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>0 0 0</fdir1>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <!-- <sensor name='cameracolor' type='camera'> 
+        <topic>/camera/color/image_raw</topic>
+        <camera_info_topic>/camera/color/camera_info</camera_info_topic>
+        <ignition_frame_id>camera_link</ignition_frame_id>
+
+        <camera name='camera'>
+          <horizontal_fov>1.21126</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>RGB_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+
+        </camera>
+        <always_on>0</always_on>
+        <update_rate>60</update_rate>
+        <visualize>0</visualize>
+        <pose>0.217 0.0175 0.1375 0 -0 0</pose>
+      </sensor> -->
+
+      <!-- <sensor name='cameraired1' type='camera'>
+        <topic>/camera/infra1/image_raw</topic>
+        <camera_info_topic>/camera/infra1/camera_info</camera_info_topic>
+        <frame_id>camera_left_ir_optical_frame</frame_id>
+        <camera name='camera'>
+          <horizontal_fov>1.21126</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>L_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.05</stddev>
+          </noise>
+        </camera>
+        <always_on>0</always_on>
+        <update_rate>30</update_rate>
+        <visualize>0</visualize>
+        <pose>0.217 0.0175 0.1375 0 -0 0</pose>
+      </sensor>
+
+      <sensor name='cameraired2' type='camera'>
+        <topic>/camera/infra2/image_raw</topic>
+        <camera_info_topic>/camera/infra2/camera_info</camera_info_topic>
+        <frame_id>camera_right_ir_optical_frame</frame_id>
+        <camera name='camera'>
+          <horizontal_fov>1.21126</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>L_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.05</stddev>
+          </noise>
+          
+        </camera>
+        <always_on>0</always_on>
+        <update_rate>30</update_rate>
+        <visualize>0</visualize>
+        <pose>0.217 0.0175 0.1375 0 -0 0</pose>
+      </sensor> -->
+
+      <!-- <sensor name='cameradepth' type='depth'>
+
+        <topic>/camera/depth/image_rect_raw</topic>
+        <camera_info_topic>/camera/depth/camera_info</camera_info_topic>
+        <ignition_frame_id>camera_link</ignition_frame_id>
+        <point_cloud>
+          <enable>false</enable>
+          <topic>/camera/depth/color/points</topic>
+          <min_depth>0.25</min_depth>
+          <max_depth>9.0</max_depth>
+        </point_cloud>
+        <camera name='camera'>
+          <horizontal_fov>1.21126</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.1</stddev>
+          </noise>
+        </camera>
+        <always_on>0</always_on>
+        <update_rate>60</update_rate>
+        <visualize>0</visualize>
+        <pose>0.217 0.0175 0.1375 0 -0 0</pose>
+      </sensor> -->
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>camera_link</child>
+      <pose>0.2319 0 0.1375 0 0 0</pose>
+    </joint>
+
+    <link name="left_front_wheel_link">
+      <visual name='base_link_fixed_joint_lump__front_left_wheel_link_visual_1'>
+        <pose>0.231976 0.208252 -0.100998 1.57 0 3.14</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name='base_link_fixed_joint_lump__front_left_wheel_link_collision_1'>
+        <pose>0.231976 0.208252 -0.100998 1.57 0 3.14</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>  <!-- High static friction coefficient -->
+              <mu2>10.0</mu2> <!-- Optional: High kinetic friction coefficient -->
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0.01</soft_cfm>  <!-- Constraint Force Mixing -->
+              <soft_erp>0.8</soft_erp>  <!-- Error Reduction Parameter -->
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+
+    </link>
+
+
+    <link name="right_front_wheel_link">
+      <visual name='base_link_fixed_joint_lump__front_right_wheel_link_visual_2'>
+        <pose>0.231976 -0.208252 -0.100998 1.57 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name='base_link_fixed_joint_lump__front_right_wheel_link_collision_2'>
+        <pose>0.231976 -0.208252 -0.100998 1.57 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>  <!-- High static friction coefficient -->
+              <mu2>10.0</mu2> <!-- Optional: High kinetic friction coefficient -->
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0.01</soft_cfm>  <!-- Constraint Force Mixing -->
+              <soft_erp>0.8</soft_erp>  <!-- Error Reduction Parameter -->
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+
+    <link name="left_rear_wheel_link">
+      <visual name='base_link_fixed_joint_lump__rear_left_wheel_link_visual_3'>
+        <pose>-0.231976 0.208252 -0.100998 1.57 0 3.14</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name='base_link_fixed_joint_lump__rear_left_wheel_link_collision_3'>
+        <pose>-0.231976 0.208252 -0.100998 1.57 0 3.14</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>  <!-- High static friction coefficient -->
+              <mu2>10.0</mu2> <!-- Optional: High kinetic friction coefficient -->
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0.01</soft_cfm>  <!-- Constraint Force Mixing -->
+              <soft_erp>0.8</soft_erp>  <!-- Error Reduction Parameter -->
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <link name="right_rear_wheel_link">
+      <visual name='base_link_fixed_joint_lump__rear_right_wheel_link_visual_4'>
+        <pose>-0.231976 -0.208252 -0.100998 1.57 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name='base_link_fixed_joint_lump__rear_right_wheel_link_collision_4'>
+        <pose>-0.231976 -0.208252 -0.100998 1.57 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>  <!-- High static friction coefficient -->
+              <mu2>10.0</mu2> <!-- Optional: High kinetic friction coefficient -->
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0.01</soft_cfm>  <!-- Constraint Force Mixing -->
+              <soft_erp>0.8</soft_erp>  <!-- Error Reduction Parameter -->
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <joint name="left_front_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>left_front_wheel_link</child>
+      <pose>0.231976 0.208252 -0.100998 1.57 0 3.14</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <joint name="right_front_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>right_front_wheel_link</child>
+      <pose>0.231976 -0.208252 -0.100998 1.57 -0 0</pose>
+      <axis>
+        <xyz>0 0 -1</xyz>
+      </axis>
+    </joint>
+
+
+    <joint name="left_rear_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>left_rear_wheel_link</child>
+      <pose>-0.231976 0.208252 -0.100998 1.57 0 3.14</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <joint name="right_rear_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>right_rear_wheel_link</child>
+      <pose>-0.231976 -0.208252 -0.100998 1.57 -0 0</pose>
+      <axis>
+        <xyz>0 0 -1</xyz>
+      </axis>
+    </joint>
+
+
+    <!-- <plugin filename="ignition-gazebo-mecanum-drive-system" name="ignition::gazebo::systems::MecanumDrive">
+      Wheel definition
+      <back_left_joint>left_rear_wheel_joint</back_left_joint>
+      <back_right_joint>right_rear_wheel_joint</back_right_joint>
+      <front_left_joint>left_front_wheel_joint</front_left_joint>
+      <front_right_joint>right_front_wheel_joint</front_right_joint>
+
+      <wheel_separation>0.170</wheel_separation>
+      <wheel_base>0.1276</wheel_base>
+      <wheel_radius>0.033</wheel_radius>
+      
+      Input
+      <min_acceleration>-5.0</min_acceleration>
+      <max_acceleration>5.0</max_acceleration>
+      <topic>/model/gr_robot/cmd_vel</topic>
+
+      Output
+      <odom_frame_id>odom</odom_frame_id>
+      <base_frame_id>base_link</base_frame_id>
+      <enable_odom_tf>true</enable_odom_tf>
+      <odom_publish_frequency>20</odom_publish_frequency>
+    </plugin>
+ -->
+
+    <plugin filename="ignition-gazebo-diff-drive-system" name="ignition::gazebo::systems::DiffDrive">
+      <left_joint>left_rear_wheel_joint</left_joint>
+      <right_joint>right_rear_wheel_joint</right_joint>
+      <wheel_separation>0.416504</wheel_separation>
+      <wheel_diameter>0.015</wheel_diameter>
+
+      <!-- <torque>10</torque> -->
+      <topic>/model/gr_robot/cmd_vel</topic>
+
+
+      <odom_publish_frequency>20.0</odom_publish_frequency>
+      <update_rate>20.0</update_rate>
+      <!-- <tf_frame_prefix_enable>0</tf_frame_prefix_enable> -->
+
+      <publish_odom>false</publish_odom>
+      <odom_topic>/odom</odom_topic>
+
+
+      <publish_odom_tf>true</publish_odom_tf>
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_link</child_frame_id>
+
+    </plugin>
+
+
+    <plugin filename="ignition-gazebo-diff-drive-system" name="ignition::gazebo::systems::DiffDrive">
+      <left_joint>left_front_wheel_joint</left_joint>
+      <right_joint>right_front_wheel_joint</right_joint>
+      <wheel_separation>0.416504</wheel_separation>
+      <wheel_diameter>0.015</wheel_diameter>
+
+      <!-- <torque>10</torque> -->
+      <topic>/model/gr_robot/cmd_vel</topic>
+
+      <update_rate>20.0</update_rate>
+      <publish_odom>0</publish_odom>
+      <publish_odom_tf>0</publish_odom_tf>
+
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_link</child_frame_id>
+    </plugin>
+
+    <static>0</static>
+
+  </model>
+</sdf>

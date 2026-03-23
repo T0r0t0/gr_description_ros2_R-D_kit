@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<!--
+Reference:
+    [1] https://answers.ros.org/question/246914/four-wheeled-skid-steering-in-gazebo-and-ros-using-gazebo-ros-control/
+    [2] https://answers.ros.org/question/10119/gazebo-controller-for-skid-steering/
+    [3] https://answers.ros.org/question/9640/rotation-error-in-gazebo-simulation/
+    [4] https://www.youtube.com/watch?v=fuRAv6PDwdw
+-->
+<sdf version='1.9'>
+  <model xmlns:xacro="http://ros.org/wiki/xacro">
+      <plugin filename="ignition-gazebo-diff-drive-system" name="ignition::gazebo::systems::DiffDrive">
+        <left_joint>left_rear_wheel_joint</left_joint>
+        <right_joint>right_rear_wheel_joint</right_joint>
+        <wheel_separation>0.416504</wheel_separation>
+        <wheel_diameter>0.2</wheel_diameter>
+
+        <odom_frame>odom</odom_frame>
+        <base_frame>base_link</base_frame>
+        <publish_odom_tf>true</publish_odom_tf>
+
+        <torque>10</torque>
+        <topic>/model/gr_robot/cmd_vel</topic>
+
+        <publish_rate>20.0</publish_rate>
+        <update_rate>20.0</update_rate>
+      </plugin>
+
+      <plugin filename="ignition-gazebo-diff-drive-system" name="ignition::gazebo::systems::DiffDrive">
+        <left_joint>left_front_wheel_joint</left_joint>
+        <right_joint>right_front_wheel_joint</right_joint>
+        <wheel_separation>0.416504</wheel_separation>
+        <wheel_diameter>0.2</wheel_diameter>
+
+        <torque>10</torque>
+        <topic>/model/gr_robot/cmd_vel</topic>
+
+        <publish_rate>20.0</publish_rate>
+        <update_rate>20.0</update_rate>
+      </plugin>
+  </model>
+</sdf>

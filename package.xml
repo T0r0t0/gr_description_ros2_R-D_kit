@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>gr_description</name>
+  <version>0.0.0</version>
+  <maintainer email="hunter_gr@todo.todo">hunter_gr</maintainer>
+  <description>Description of the gr robot</description>
+  <license>Copyright (c) 2022, Generation Robots.</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>geometry_msgs</depend>
+  <depend>ros_gz_bridge</depend> <!--Creates communication bridges between ROS 2 topics and Gazebo topics.-->
+  <depend>ros_gz_image</depend> <!--Bridge specialized in transmitting images. Used to get visual data (e.g. from simulated cameras) from Gazebo and send it to ROS 2 -->
+  <depend>ros_gz_sim</depend> <!--This package contains launch files and utilities to start Ignition Gazebo and to load models and worlds into the simulator -->
+  <depend>sensor_msgs</depend>
+  <depend>tf2</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+  
+</package>

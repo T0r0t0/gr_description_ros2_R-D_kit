@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<model name="gps_antenna" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="gps_antenna" params="prefix parent *origin">
+
+
+    <!-- Electrical Box -->
+    <link name="${prefix}gps_antenna_link" >
+      <visual name="${prefix}gps_antenna_visual">
+        <pose>0 0 0.0278 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.01375</radius>
+            <length>0.0556</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <name>DarkGrey</name>
+          <ambient>0.2 0.2 0.2 1.0</ambient>
+          <diffuse>0.4 0.4 0.4 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+        </material>
+      </visual>
+      <collision name="${prefix}gps_antenna_collision"> 
+      <pose>0 0 0.0278 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.01375</radius>
+            <length>0.0556</length>
+          </cylinder>
+        </geometry>
+      </collision>
+    </link>
+
+
+    <joint name="${prefix}gps_antenna_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent>${parent}</parent>
+      <child>${prefix}gps_antenna_link</child>
+    </joint>
+
+    <!-- Gazebo definition -->
+    <sensor name="navsat" type="navsat">
+      <always_on>1</always_on>
+      <update_rate>1</update_rate>
+      <topic>navsat</topic>
+    </sensor>
+
+    <!-- <link name="${parent}"/> -->
+  </xacro:macro>
+</model>

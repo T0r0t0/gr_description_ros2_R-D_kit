@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="bunker_mini2" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="bunker_mini2">
+    <link name="base_link">
+      <inertial>
+        <origin
+          xyz="0.0266989327622036 0.000409203500587652 -0.135901124750884"
+          rpy="0 0 0" />
+        <mass
+          value="6.02945169536679" />
+        <inertia
+          ixx="0.0332370959804736"
+          ixy="-1.013150489971E-06"
+          ixz="-0.00188859201421112"
+          iyy="0.111072002332437"
+          iyz="-5.13308150598312E-07"
+          izz="0.12660862809283" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0.12285"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="file://$(find gr_description)/meshes/agilex/bunker_mini_v2/bunker_mini_v2.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="file://$(find gr_description)/meshes/agilex/bunker_mini_v2/bunker_mini_v2.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+</robot>

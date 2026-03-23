@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<model xmlns:xacro="http://ros.org/wiki/xacro" name="scout_wheel">
+    <xacro:macro name="scout_mini_wheel" params="wheel_prefix">
+        <xacro:property name="path_to_scout_mini_wheel_mesh" value="file://$(find gr_description)/meshes/agilex/scout/wheel.dae"/>
+        <xacro:property name="M_PI" value="3.14159"/>
+
+
+        <link name="${wheel_prefix}_wheel_link">
+            <inertial>
+                <mass>3</mass>
+                <pose>0 0 0 0 0 0</pose>
+                <inertia>
+                    <ixx>0.7171</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.7171</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.1361</izz>
+                </inertia>
+            </inertial>
+            <visual name="${wheel_prefix}_wheel_visual">
+                <pose>0 0 0 1.57 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>${path_to_scout_mini_wheel_mesh}</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+            <collision name="${wheel_prefix}_wheel_collision">
+                <pose>0 0 0 1.57 0 0</pose>
+                <geometry>
+<!--                     <mesh>
+                        <uri>${path_to_scout_mini_wheel_mesh}</uri>
+                    </mesh> -->
+                    <cylinder>
+                        <pose>0 0 0 $M_PI 0 0</pose>
+                        <radius>0.04</radius>
+                        <length>0.08</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+</model>

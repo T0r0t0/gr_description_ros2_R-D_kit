@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<model name="gr_box" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="gr_box" params="prefix parent *origin">
+  <xacro:property name="path_to_gr_ros_kit" value="file://$(find gr_description)/meshes/accessories/gr_ros_kit_v3.stl"/>
+  <xacro:property name="M_PI" value="3.1415926535897931"/>
+
+
+    <link name="${prefix}bottom_box_link">
+      <visual name="${prefix}bottom_box_visual">
+        <pose>0.0 0.0 0.0 1.5708 0 -1.5708</pose>
+        <geometry>
+          <mesh>
+            <uri>${path_to_gr_ros_kit}</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <name>bottom_box_visual_color</name>
+          <ambient>0.5 0.5 0.5 1.0</ambient>
+          <diffuse>0.5 0.5 0.5 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+        </material>
+      </visual>
+      <collision name="${prefix}bottom_box_collision">
+        <!-- <pose>0.0 0.0 0.0 1.5708 0 -1.5708</pose> -->
+        <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <geometry>
+<!--           <mesh><
+            <uri>${path_to_gr_ros_kit}</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh> -->
+          <pose>0.0 0.0 0.0 ${2*M_PI} 0 0</pose>
+          <box>
+            <size>0.54 0.4 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${prefix}bottom_box_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent>${parent}</parent>
+      <child>${prefix}bottom_box_link</child>
+    </joint>
+
+    <link name="${prefix}top_box_lidar_support_link"/>
+    <joint name="${prefix}top_box_lidar_support_joint" type="fixed">
+      <pose>0.05 0.0 0.075 0 0 0</pose>
+      <parent>${prefix}top_box_link</parent>
+      <child>${prefix}top_box_lidar_support_link</child>
+    </joint>
+
+    <link name="${prefix}top_box_link">
+    </link>
+    <joint name="${prefix}top_box_joint" type="fixed">
+      <pose>-0.093 0 0.188 0 0 0</pose>
+      <parent>bottom_box_link</parent>
+      <child>${prefix}top_box_link</child>
+    </joint>
+    
+    <link name="${prefix}camera_box_link"/>
+    <joint name="${prefix}camera_box_link_joint" type="fixed">
+      <pose>0.247 0 0.056 0 0 0</pose>
+      <parent>bottom_box_link</parent>
+      <child>${prefix}camera_box_link</child>
+    </joint>
+  </xacro:macro>
+</model>

@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+
+<robot name='gr_robot'>
+  <link name='base_link'>
+
+    <inertial>
+      <origin xyz="0.00172 0.000157 -0.015991" rpy="0 -0 0"/>
+      <mass value="62.904"/>
+      <inertia ixx="5.55936" ixy="-0.00212481" ixz="-0.0130841" iyy="5.70812" iyz="-0.00151496" izz="3.74187"/>
+    </inertial>
+
+    <collision name='base_link_collision'>
+      <origin xyz="0 0 0" rpy="1.5707 -0 -1.5707"/>
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/scout_mini_base_link.dae"/>
+      </geometry>
+    </collision>
+
+    <collision name='base_link_fixed_joint_lump__bottom_box_link_collision_5'>
+      <origin xyz="0 0 0.069" rpy="1.5708 0 -1.5708"/>
+      <geometry>
+        <mesh scale="0.001 0.001 0.001" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/gr_ros_kit_v3.stl"/>
+      </geometry>
+    </collision>
+
+    <visual name='base_link_visual'>
+      <origin xyz="0 0 0" rpy="1.5707 -0 -1.5707"/>
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/scout_mini_base_link.dae"/>
+      </geometry>
+    </visual>
+
+    <visual name='base_link_fixed_joint_lump__bottom_box_link_visual_5'>
+      <origin xyz="0 0 0.069" rpy="1.5708 0 -1.5708"/>
+      <geometry>
+        <mesh scale="0.001 0.001 0.001" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/gr_ros_kit_v3.stl"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- Some Frame Definition -->
+  <link name="imu_link">
+    <visual name='base_link_fixed_joint_lump__imu_link_visual_6'>
+      <origin xyz="0 0 0.121" rpy="0 -0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.004"/>
+      </geometry>
+    </visual>
+
+    <collision name='base_link_fixed_joint_lump__imu_link_collision_6'>
+      <origin xyz="0 0 0.121" rpy="0 -0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.004"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Lidar Definition -->
+  
+  <link name="rslidar"/>
+  <joint name="rslidar_joint" type="fixed">
+    <origin xyz="-0.043 0 0.3273" rpy="0 -0 0"/>
+    <parent link="base_link"/>
+    <child link="rslidar"/>
+  </joint>
+  
+  <link name="RS16_link">
+    <visual name='base_link_fixed_joint_lump__base_visual_visual_8'>
+      <origin XYZ="0 0 0" rpy="1.5708 -0 1.5708"/>
+      <geometry>
+        <mesh scale="0.001 0.001 0.001" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/helios_16.stl"/>
+      </geometry>
+      <material name="red_material">
+        <color rgba="0.8 0.2 0.2 1"/>  <!-- RGBA: Red color -->
+      </material>
+    </visual> 
+
+    <collision name='base_link_fixed_joint_lump__base_collision_collision_8'>
+      <origin xyz="0 0 0.0620" rpy="0 -0 0"/>
+
+      <geometry>
+        <cylinder length="0.08" radius="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="RS16_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="RS16_link"/>
+    <origin xyz="-0.043 0 0.3273" rpy="0 -0 0"/>
+  </joint>
+
+  <!-- Camera definition -->
+  <link name="camera_link">
+    <visual name='base_link_fixed_joint_lump__camera_link_visual_7'>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/d435.dae"/>
+      </geometry>
+    </visual>
+
+    <collision name='base_link_fixed_joint_lump__camera_link_collision_7'>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <box size="0.02505 0.09 0.025"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0 0 0" rpy="1.5708 -0 1.5708"/>
+  </joint>
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.2319 0 0.1375" rpy="0 -0 0"/>
+  </joint>
+
+
+  <!-- Wheels Definition -->
+  <link name="left_front_wheel_link">
+    <visual name='base_link_fixed_joint_lump__front_left_wheel_link_visual_1'>
+      <!-- <origin xyz="0.231976 0.208252 -0.100998" rpy="1.57 0 3.14"/> -->
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+      </geometry>
+    </visual>
+
+    <collision name='base_link_fixed_joint_lump__front_left_wheel_link_collision_1'>
+      <!-- <origin xyz="0.231976 0.208252 -0.100998" rpy="1.57 0 3.14"/> -->
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+
+  <link name="right_front_wheel_link">
+    <visual name='base_link_fixed_joint_lump__front_right_wheel_link_visual_2'>
+      <!-- <origin xyz="0.231976 -0.208252 -0.100998" rpy="1.57 -0 0"/> -->
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+      </geometry>
+    </visual>
+
+    <collision name='base_link_fixed_joint_lump__front_right_wheel_link_collision_2'>
+      <!-- <origin xyz="0.231976 -0.208252 -0.100998" rpy="1.57 -0 0"/> -->
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link name="left_rear_wheel_link">
+    <visual name='base_link_fixed_joint_lump__rear_left_wheel_link_visual_3'>
+      <!-- <origin xyz="-0.231976 0.208252 -0.100998" rpy="1.57 0 3.14"/> -->
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+      </geometry>
+    </visual>
+
+    <collision name='base_link_fixed_joint_lump__rear_left_wheel_link_collision_3'>
+      <!-- <origin xyz="-0.231976 0.208252 -0.100998" rpy="1.57 0 3.14"/> -->
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="right_rear_wheel_link">
+    <visual name='base_link_fixed_joint_lump__rear_right_wheel_link_visual_4'>
+      <!-- <origin xyz="-0.231976 -0.208252 -0.100998" rpy="1.57 -0 0"/> -->
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+      </geometry>
+    </visual>
+
+    <collision name='base_link_fixed_joint_lump__rear_right_wheel_link_collision_4'>
+      <!-- <origin xyz="-0.231976 -0.208252 -0.100998" rpy="1.57 -0 0"/> -->
+      <geometry>
+        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="left_front_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_front_wheel_link"/>
+    <origin xyz="0.231976 0.208252 -0.100998" rpy="1.57 0 3.14"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="right_front_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_front_wheel_link"/>
+    <origin xyz="0.231976 -0.208252 -0.100998" rpy="1.57 -0 0"/>
+    <axis xyz="0 0 -1"/>
+  </joint>
+
+
+  <joint name="left_rear_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_rear_wheel_link"/>
+    <origin xyz="-0.231976 0.208252 -0.100998" rpy="1.57 0 3.14"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="right_rear_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_rear_wheel_link"/>
+    <origin xyz="-0.231976 -0.208252 -0.100998" rpy="1.57 -0 0"/>
+    <axis xyz="0 0 -1"/>
+  </joint>
+</robot>

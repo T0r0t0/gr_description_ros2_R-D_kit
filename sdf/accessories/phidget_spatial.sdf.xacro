@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<model name="phidget_spatial" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="phidget_spatial" params="prefix parent *origin hz:=20">
+
+
+    <link name="${prefix}imu_link">
+      <visual name="${prefix}imu_visual">
+        <pose>0 0 0.002 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.004</size>
+          </box>
+        </geometry>
+        <material>
+          <name>plastic</name>
+          <ambient>0.2 0.2 0.2 1.0</ambient>
+          <diffuse>0.5 0.5 0.5 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+        </material>
+      </visual>
+
+      <collision name="${prefix}imu_collision">
+        <pose>0 0 0.002 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.004</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.01</mass>
+        <inertia >
+          <ixx>1</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>1</iyy>
+          <iyz>0.0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+    </link>
+      
+    <joint name="${prefix}_imu_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent>${parent}</parent>
+      <child>${prefix}imu_link</child>
+    </joint>
+
+      <sensor name='imu_sensor' type='imu'>
+        <topic>/model/gr_robot/imu</topic>
+        <always_on>1</always_on>
+        <update_rate>${hz}</update_rate>
+        <visualize>1</visualize>
+      </sensor>
+
+      <sensor name='magneto_sensor' type='magnetometer'>
+        <topic>/model/gr_robot/magnetometer</topic>
+        <always_on>1</always_on>
+        <update_rate>${hz}</update_rate>
+        <visualize>1</visualize>
+
+        <!-- Magnetometer-specific properties -->
+        <magnetometer>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </magnetometer>
+      </sensor>
+  </xacro:macro>
+</model>

@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<model name="scout_mini" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:macro name="scout_mini" params="prefix">
+
+    <xacro:include filename="$(find gr_description)/sdf/agilex/scout/scout_mini_wheel.sdf.xacro"/>
+
+    <!-- Variables -->
+    <xacro:property name="M_PI" value="3.14159"/>
+    <xacro:property name="path_to_scout_mini_mesh" value="file://$(find gr_description)/meshes/agilex/scout/scout_mini_base_link.dae"/>
+
+    <!-- Vehicle Geometries -->
+    <xacro:property name="base_x_size" value="0.6200000"/>
+    <xacro:property name="base_y_size" value="0.585000"/>
+    <xacro:property name="base_z_size" value="0.235000"/>
+
+    <xacro:property name="wheelbase" value="0.463951"/>
+    <xacro:property name="track" value="0.416503"/>
+    <xacro:property name="wheel_vertical_offset" value="-0.100998"/>
+
+    <xacro:property name="wheel_length" value="0.8e-01"/>
+    <xacro:property name="wheel_radius" value="1.600e-01"/>
+
+    <!-- Base link -->
+    <link name="base_link">
+        <visual name="base_visual">
+            <pose>0 0 0 1.5707 0 -1.5707</pose>
+            <geometry>
+                <mesh>
+                    <uri>${path_to_scout_mini_mesh}</uri>
+                </mesh>
+            </geometry>
+        </visual>
+        <collision name="base_collision">
+            <!-- <pose>0 0 0 1.5707 0 -1.5707</pose> -->
+            <geometry>
+    <!--             <mesh>
+                    <uri>${path_to_scout_mini_mesh}</uri>
+                </mesh> -->
+                <box>
+                    <size>0.55 0.4 0.12</size>
+                </box>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="inertial_link">
+    <inertial>
+        <mass>50</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+        </inertia>
+    </inertial>
+    </link>
+
+    <joint name="inertial_joint" type="fixed">
+        <pose>0 0 0 0 0 0</pose>
+        <parent>base_link</parent>
+        <child>inertial_link</child>
+    </joint>
+
+    <!-- Scout wheel macros -->
+    <!-- wheel labeled from 0 to 3, conter-clockwise, starting from front right wheel -->
+    <!-- motor 1 and 2 (left side) are mechanically installed in a reversed direction -->
+    <xacro:scout_mini_wheel wheel_prefix="front_right"/>
+    <xacro:scout_mini_wheel wheel_prefix="front_left"/>
+    <xacro:scout_mini_wheel wheel_prefix="rear_left"/>
+    <xacro:scout_mini_wheel wheel_prefix="rear_right"/>
+        
+    <joint name="front_right_wheel_joint" type="fixed">
+    <parent>base_link</parent>
+    <child>front_right_wheel_link</child>
+    <pose>${wheelbase/2} ${-track/2} ${wheel_vertical_offset} 0 0 0</pose>
+    <axis>0 1 0 0 0 0</axis>
+    <!-- <dynamics damping="0.0" friction="0"/> -->
+    </joint>
+
+    <joint name="front_left_wheel_joint" type="fixed">
+        <parent>base_link</parent>
+        <child>front_left_wheel_link</child>
+        <pose>${wheelbase/2} ${track/2} ${wheel_vertical_offset} 0 0 3.14</pose>
+        <axis>0 -1 0 0 0 0</axis>
+        <!-- <dynamics damping="0.0" friction="0"/> -->
+    </joint>
+
+    <joint name="rear_left_wheel_joint" type="fixed">
+        <parent>base_link</parent>
+        <child>rear_left_wheel_link</child>
+        <pose>${-wheelbase/2} ${track/2} ${wheel_vertical_offset} 0 0 3.14</pose>
+        <axis>0 -1 0 0 0 0</axis>
+        <!-- <dynamics damping="0.0" friction="0"/> -->
+    </joint>
+    
+    <joint name="rear_right_wheel_joint" type="fixed">
+        <parent>base_link</parent>
+        <child>rear_right_wheel_link</child>
+        <pose>${-wheelbase/2} ${-track/2} ${wheel_vertical_offset} 0 0 0</pose>
+        <axis>0 1 0 0 0 0</axis>
+        <!-- <dynamics damping="0.0" friction="0"/> -->
+    </joint>
+
+    <link name="front_mount"/>
+
+    <joint name="front_mount_joint" type="fixed">
+        <pose>0.175 0 0.068999 0 0 0</pose>
+        <parent>base_link</parent>
+        <child>front_mount</child>
+    </joint>
+
+    <link name="rear_mount"/>
+
+    <joint name="rear_mount_joint" type="fixed">
+        <pose>-0.175 0 0.068999 0 0 0</pose>
+        <parent>base_link</parent>
+        <child>rear_mount</child>
+    </joint>
+
+    <!-- Additional definitions -->
+    <!-- <xacro:include filename="$(arg urdf_extras)"/> -->
+
+    <!-- Gazebo definitions  -->
+    <xacro:include filename="$(find gr_description)/urdf/agilex/scout/scout_mini.gazebo"/>
+    </xacro:macro>
+</model>
