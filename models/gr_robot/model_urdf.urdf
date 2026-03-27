@@ -12,28 +12,28 @@
     <collision name='base_link_collision'>
       <origin xyz="0 0 0" rpy="1.5707 -0 -1.5707"/>
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/scout_mini_base_link.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/agilex/scout/scout_mini_base_link.dae"/>
       </geometry>
     </collision>
 
     <collision name='base_link_fixed_joint_lump__bottom_box_link_collision_5'>
       <origin xyz="0 0 0.069" rpy="1.5708 0 -1.5708"/>
       <geometry>
-        <mesh scale="0.001 0.001 0.001" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/gr_ros_kit_v3.stl"/>
+        <mesh scale="0.001 0.001 0.001" filename="package://gr_description/models/gr_robot/meshes/accessories/gr_ros_kit_v3.stl"/>
       </geometry>
     </collision>
 
     <visual name='base_link_visual'>
       <origin xyz="0 0 0" rpy="1.5707 -0 -1.5707"/>
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/scout_mini_base_link.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/agilex/scout/scout_mini_base_link.dae"/>
       </geometry>
     </visual>
 
     <visual name='base_link_fixed_joint_lump__bottom_box_link_visual_5'>
       <origin xyz="0 0 0.069" rpy="1.5708 0 -1.5708"/>
       <geometry>
-        <mesh scale="0.001 0.001 0.001" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/gr_ros_kit_v3.stl"/>
+        <mesh scale="0.001 0.001 0.001" filename="package://gr_description/models/gr_robot/meshes/accessories/gr_ros_kit_v3.stl"/>
       </geometry>
     </visual>
   </link>
@@ -68,7 +68,7 @@
     <visual name='base_link_fixed_joint_lump__base_visual_visual_8'>
       <origin XYZ="0 0 0" rpy="1.5708 -0 1.5708"/>
       <geometry>
-        <mesh scale="0.001 0.001 0.001" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/helios_16.stl"/>
+        <mesh scale="0.001 0.001 0.001" filename="package://gr_description/models/gr_robot/meshes/accessories/helios_16.stl"/>
       </geometry>
       <material name="red_material">
         <color rgba="0.8 0.2 0.2 1"/>  <!-- RGBA: Red color -->
@@ -95,7 +95,7 @@
     <visual name='base_link_fixed_joint_lump__camera_link_visual_7'>
       <origin xyz="0 0 0" rpy="0 -0 0"/>
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/d435.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/accessories/d435.dae"/>
       </geometry>
     </visual>
 
@@ -125,14 +125,14 @@
     <visual name='base_link_fixed_joint_lump__front_left_wheel_link_visual_1'>
       <!-- <origin xyz="0.231976 0.208252 -0.100998" rpy="1.57 0 3.14"/> -->
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/agilex/scout/wheel.dae"/>
       </geometry>
     </visual>
 
     <collision name='base_link_fixed_joint_lump__front_left_wheel_link_collision_1'>
       <!-- <origin xyz="0.231976 0.208252 -0.100998" rpy="1.57 0 3.14"/> -->
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/agilex/scout/wheel.dae"/>
       </geometry>
     </collision>
 
@@ -143,14 +143,14 @@
     <visual name='base_link_fixed_joint_lump__front_right_wheel_link_visual_2'>
       <!-- <origin xyz="0.231976 -0.208252 -0.100998" rpy="1.57 -0 0"/> -->
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/agilex/scout/wheel.dae"/>
       </geometry>
     </visual>
 
     <collision name='base_link_fixed_joint_lump__front_right_wheel_link_collision_2'>
       <!-- <origin xyz="0.231976 -0.208252 -0.100998" rpy="1.57 -0 0"/> -->
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/agilex/scout/wheel.dae"/>
       </geometry>
     </collision>
   </link>
@@ -160,14 +160,14 @@
     <visual name='base_link_fixed_joint_lump__rear_left_wheel_link_visual_3'>
       <!-- <origin xyz="-0.231976 0.208252 -0.100998" rpy="1.57 0 3.14"/> -->
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/agilex/scout/wheel.dae"/>
       </geometry>
     </visual>
 
     <collision name='base_link_fixed_joint_lump__rear_left_wheel_link_collision_3'>
       <!-- <origin xyz="-0.231976 0.208252 -0.100998" rpy="1.57 0 3.14"/> -->
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/agilex/scout/wheel.dae"/>
       </geometry>
     </collision>
   </link>
@@ -176,14 +176,14 @@
     <visual name='base_link_fixed_joint_lump__rear_right_wheel_link_visual_4'>
       <!-- <origin xyz="-0.231976 -0.208252 -0.100998" rpy="1.57 -0 0"/> -->
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/agilex/scout/wheel.dae"/>
       </geometry>
     </visual>
 
     <collision name='base_link_fixed_joint_lump__rear_right_wheel_link_collision_4'>
       <!-- <origin xyz="-0.231976 -0.208252 -0.100998" rpy="1.57 -0 0"/> -->
       <geometry>
-        <mesh scale="1 1 1" filename="file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae"/>
+        <mesh scale="1 1 1" filename="package://gr_description/models/gr_robot/meshes/agilex/scout/wheel.dae"/>
       </geometry>
     </collision>
   </link>

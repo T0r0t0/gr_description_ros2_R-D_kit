@@ -41,7 +41,7 @@ set(dependencies
 
 
 install(
-  DIRECTORY launch rviz worlds meshes models params
+  DIRECTORY launch rviz worlds models params
   DESTINATION share/${PROJECT_NAME}
 )
 

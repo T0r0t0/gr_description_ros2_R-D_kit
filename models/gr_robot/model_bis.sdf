@@ -21,7 +21,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/scout_mini_base_link.dae</uri>
+            <uri>model://gr_robot/meshes/agilex/scout/scout_mini_base_link.dae</uri>
           </mesh>
         </geometry>
         <surface>
@@ -39,7 +39,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/gr_ros_kit_v3.stl</uri>
+            <uri>model://gr_robot/meshes/accessories/gr_ros_kit_v3.stl</uri>
           </mesh>
         </geometry>
       </collision>
@@ -58,7 +58,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/scout_mini_base_link.dae</uri>
+            <uri>model://gr_robot/meshes/agilex/scout/scout_mini_base_link.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -75,7 +75,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/gr_ros_kit_v3.stl</uri>
+            <uri>model://gr_robot/meshes/accessories/gr_ros_kit_v3.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -140,7 +140,7 @@
         <geometry>
           <mesh>
             <scale>0.001 0.001 0.001</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/helios_16.stl</uri>
+            <uri>model://gr_robot/meshes/accessories/helios_16.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -210,7 +210,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/accessories/d435.dae</uri>
+            <uri>model://gr_robot/meshes/accessories/d435.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -368,7 +368,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+            <uri>model://gr_robot/meshes/agilex/scout/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -378,7 +378,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+            <uri>model://gr_robot/meshes/agilex/scout/wheel.dae</uri>
           </mesh>
         </geometry>
         <surface>
@@ -406,7 +406,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+            <uri>model://gr_robot/meshes/agilex/scout/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -416,7 +416,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+            <uri>model://gr_robot/meshes/agilex/scout/wheel.dae</uri>
           </mesh>
         </geometry>
         <surface>
@@ -443,7 +443,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+            <uri>model://gr_robot/meshes/agilex/scout/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -453,7 +453,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+            <uri>model://gr_robot/meshes/agilex/scout/wheel.dae</uri>
           </mesh>
         </geometry>
         <surface>
@@ -479,7 +479,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+            <uri>model://gr_robot/meshes/agilex/scout/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -489,7 +489,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>file:///ros2_ws/install/gr_description/share/gr_description/meshes/agilex/scout/wheel.dae</uri>
+            <uri>model://gr_robot/meshes/agilex/scout/wheel.dae</uri>
           </mesh>
         </geometry>
         <surface>
